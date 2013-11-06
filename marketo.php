@@ -194,7 +194,7 @@ class Marketo {
      * @param   $program - the name of the containing program
      * @param   $tokens (optional) - array of My Tokens to be used in campaign
      * 
-     * @return object : Available Marketo Campaigns object.
+     * @return object : Scheduled Marketo Campaigns object.
      */
     public function schedule_campaign($time, $campaign, $program, $tokens = NULL) {
         $params = new stdClass;
