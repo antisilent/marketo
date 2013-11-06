@@ -183,6 +183,35 @@ class Marketo {
     }
 
     /**
+     * Schedule an existing campaign.
+     *
+     * @author  Nick Silva
+     *
+     * @access  public
+     * 
+     * @param   $time - the time to run the campaign
+     * @param   $campaign - the name of the campaign to schedule
+     * @param   $program - the name of the containing program
+     * @param   $tokens (optional) - array of My Tokens to be used in campaign
+     * 
+     * @return object : Available Marketo Campaigns object.
+     */
+    public function schedule_campaign($time, $campaign, $program, $tokens = NULL) {
+        $params = new stdClass;
+
+        $params->source = 'MKTOWS';
+        $params->campaignRunAt = $time;
+        $params->campaignName = $campaign;
+        $params->programName = $program;
+
+        if ($tokens) {
+            $params->programTokenList = $tokens;
+        }
+
+        return $this->request('scheduleCampaign', $params);
+    }
+
+    /**
      * Add leads to a campaign.
      *
      * @author  Ben Ubois
